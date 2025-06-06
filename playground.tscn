@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=4 uid="uid://bfutdu6rjuxt"]
+[gd_scene load_steps=2 format=4 uid="uid://ul8pl55x2it6"]
 
-[ext_resource type="PackedScene" uid="uid://du2ejuk2lmwqe" path="res://Tilemaps/Test_tilemap.tscn" id="1_s01ye"]
+[ext_resource type="PackedScene" path="res://Tilemaps/Test_tilemap.tscn" id="1_s01ye"]
 
 [node name="Playground" type="Node2D"]
 
