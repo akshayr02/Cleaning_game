@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bacqn8b5wq2uy"]
+
+[sub_resource type="TileSet" id="TileSet_jmygd"]
+tile_shape = 1
+tile_layout = 5
+tile_size = Vector2i(32, 16)
+
+[node name="TilesetLevel" type="TileMapLayer"]
+tile_set = SubResource("TileSet_jmygd")
