@@ -1,139 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl3aipojl13ct"]
+[gd_scene load_steps=2 format=3 uid="uid://ymoc4tcykrmb"]
 
-[ext_resource type="Script" path="res://GUI/game_over.gd" id="1_yk8mx"]
+[sub_resource type="GDScript" id="GDScript_exdi3"]
+script/source = "extends CanvasLayer
 
-[sub_resource type="Animation" id="Animation_d8egn"]
-resource_name = "Show_game_over"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.866667, 2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
 
-[sub_resource type="Animation" id="Animation_65vdm"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Control/FadeToBlack:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
 
-[sub_resource type="Animation" id="Animation_5n8ry"]
-resource_name = "Fade_to_black"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Control/FadeToBlack:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wb1jr"]
-_data = {
-"Fade_to_black": SubResource("Animation_5n8ry"),
-"RESET": SubResource("Animation_65vdm"),
-"Show_game_over": SubResource("Animation_d8egn")
-}
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="GameOver" type="CanvasLayer"]
-script = ExtResource("1_yk8mx")
-
-[node name="Control" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.313726)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -62.0
-offset_right = -82.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(3.67112, 3.67112)
-
-[node name="Retry" type="Button" parent="Control/ColorRect/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "Retry?"
-
-[node name="MainMenu" type="Button" parent="Control/ColorRect/VBoxContainer"]
-layout_mode = 2
-text = "Main Menu"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Control"]
-root_node = NodePath("../..")
-libraries = {
-"": SubResource("AnimationLibrary_wb1jr")
-}
-
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 1
-offset_left = 608.0
-offset_top = 265.0
-offset_right = 700.0
-offset_bottom = 288.0
-scale = Vector2(7.35166, 7.35166)
-size_flags_horizontal = 4
-size_flags_vertical = 1
-text = "GAME OVER"
-
-[node name="FadeToBlack" type="ColorRect" parent="Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0)
+script = SubResource("GDScript_exdi3")
