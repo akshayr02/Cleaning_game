@@ -9,6 +9,7 @@ var direction : Vector2
 
 var next_state : State = null
 @onready var idle: State_Idle = $"../Idle"
+@onready var death: State_Death = $"../Death"
 
 # What happens when the player enters this State?
 func Enter() -> void:
@@ -19,7 +20,7 @@ func Enter() -> void:
 	player.SetDirection()
 	player.UpdateAnimation("Stun")
 	player.make_invulnerable(invulnerable_duration)
-	player.effect_animation_player.play("Damaged")
+	#player.effect_animation_player.play("Damaged")
 	
 	pass
 
@@ -44,9 +45,12 @@ func Physics( _delta : float) -> State:
 	
 func _player_damaged(_hurtbox : HurtBox) -> void:
 	hurtbox = _hurtbox
-	state_machine.ChangeState(self)
+	if state_machine.current_state != death:
+		state_machine.ChangeState(self)
 	pass
 	
 func _animation_finished(_a : String) -> void:
 	next_state = idle
+	if player.hp <= 0:
+		next_state = death
 	pass

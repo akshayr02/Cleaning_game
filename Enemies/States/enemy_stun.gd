@@ -31,13 +31,15 @@ func Enter() -> void:
 	enemy.SetDirection(_direction)
 	enemy.velocity = _direction * -knockback_speed
 	#enemy.UpdateAnimation(anim_name)
-	enemy.animation_player.animation_finished.connect(_on_animation_finished)
+	#enemy.animation_player.animation_finished.connect(_on_animation_finished)
+	await get_tree().create_timer(0.5).timeout
+	_animation_finished = true
 	pass
 
 # What happens when the player exits this State?
 func Exit() -> void:
 	enemy.invulnerable = false
-	enemy.animation_player.animation_finished.disconnect(_on_animation_finished)
+	#enemy.animation_player.animation_finished.disconnect(_on_animation_finished)
 	pass
 	
 # What happens during the _process update in this State?

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c8ep5xc3p6gas"]
+[gd_scene load_steps=18 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Texture2D" uid="uid://betjrx81lyt3g" path="res://icon.svg" id="1_ae418"]
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/state_walk.gd" id="6_6jvxd"]
 [ext_resource type="Script" path="res://Player/Scripts/state_stun.gd" id="7_o2rft"]
 [ext_resource type="Script" path="res://Player/Scripts/state_attack.gd" id="8_4k258"]
+[ext_resource type="Script" path="res://Player/Scripts/state_death.gd" id="10_q5hhq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yue"]
 radius = 66.0076
@@ -16,6 +17,72 @@ radius = 66.0076
 [sub_resource type="CircleShape2D" id="CircleShape2D_ngfrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ih7tx"]
+
+[sub_resource type="Animation" id="Animation_m5c21"]
+resource_name = "Stun"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3qqui"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o76rq"]
+resource_name = "Death"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.796515, 0.324279, 0.278695, 0.568627)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vpv21"]
+_data = {
+"Death": SubResource("Animation_o76rq"),
+"RESET": SubResource("Animation_3qqui"),
+"Stun": SubResource("Animation_m5c21")
+}
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -66,3 +133,11 @@ script = ExtResource("7_o2rft")
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("8_4k258")
+
+[node name="Death" type="Node" parent="StateMachine"]
+script = ExtResource("10_q5hhq")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vpv21")
+}

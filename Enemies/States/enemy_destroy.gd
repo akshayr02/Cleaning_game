@@ -31,7 +31,8 @@ func Enter() -> void:
 	enemy.SetDirection(_direction)
 	enemy.velocity = _direction * -knockback_speed
 	#enemy.UpdateAnimation(anim_name)
-	enemy.animation_player.animation_finished.connect(_on_animation_finished)
+	#enemy.animation_player.animation_finished.connect(_on_animation_finished)
+	enemy.queue_free()
 	disable_hurt_box()
 	#drop_items()
 	pass

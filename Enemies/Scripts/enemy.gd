@@ -13,7 +13,7 @@ var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invulnerable : bool = false
 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+#@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
 @onready var hitbox: Hitbox = $Hitbox

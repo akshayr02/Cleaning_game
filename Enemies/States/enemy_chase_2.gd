@@ -1,14 +1,13 @@
-class_name EnemyStateIdle extends EnemyState
+class_name EnemyStateChase2 extends EnemyState
 
+@export var anim_name : String = "Chase2"
+@export var chase_speed : float = 40.0
 
-@export var anim_name : String = "Idle"
 @export_category(("AI"))
-@export var state_duration_min : float = 0.5
-@export var state_duration_max : float = 1.5
-@export var after_idle_state : EnemyState
+@export var turn_rate: float = 0.25
+@export var state_aggro_duration : float = 0.5
 
-var _timer : float = 0.0
-
+var _direction : Vector2
 
 # What happens when we initalize this State?
 func init() -> void:
@@ -20,10 +19,7 @@ func _ready() -> void:
 
 # What happens when the player enters this State?
 func Enter() -> void:
-	print("in idle state")
-	enemy.velocity = Vector2.ZERO
-	_timer = randf_range(state_duration_min, state_duration_max)
-	#enemy.UpdateAnimation(anim_name)
+	print("in chase state")
 	pass
 
 # What happens when the player exits this State?
@@ -32,11 +28,18 @@ func Exit() -> void:
 	
 # What happens during the _process update in this State?
 func Process( _delta : float) -> EnemyState:
-	_timer -= _delta
-	if _timer <= 0:
-		return after_idle_state
+	var new_dir: Vector2 = enemy.global_position.direction_to(PlayerManager.player.global_position)
+	_direction = lerp(_direction, new_dir, turn_rate)
+	enemy.velocity = _direction * chase_speed
 	return null
 	
 # What happens during the _physics_process update in this State?
 func Physics( _delta : float) -> EnemyState:
 	return null
+
+#func _on_player_enter() -> void:
+	##if enemy_state_machine.current_state is EnemyStateStun:
+		##return
+	#print(self)
+	#enemy_state_machine.ChangeState(self)
+	#pass

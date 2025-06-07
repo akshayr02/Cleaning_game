@@ -23,12 +23,12 @@ func _ready() -> void:
 
 # What happens when the player enters this State?
 func Enter() -> void:
-	#print("in wander state")
+	print("in wander state")
 	_timer = randi_range(state_cycles_min, state_cycles_max) * state_animation_duration
 	var rand = randi_range(0,3)
 	_direction = enemy.DIR_4[rand] 
 	enemy.velocity = _direction * wander_speed
-	#print(_direction)
+	print(_direction)
 	enemy.SetDirection(_direction)
 	#enemy.UpdateAnimation(anim_name)
 	pass
@@ -40,6 +40,7 @@ func Exit() -> void:
 # What happens during the _process update in this State?
 func Process( _delta : float) -> EnemyState:
 	_timer -= _delta
+	#print(_timer)
 	if _timer <= 0:
 		return next_state
 	return null

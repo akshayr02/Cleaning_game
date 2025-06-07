@@ -6,7 +6,7 @@ class_name State_Walk extends State
 
 # What happens when the player enters this State?
 func Enter() -> void:
-	player.UpdateAnimation("Walk")
+	#player.UpdateAnimation("Walk")
 	pass
 
 # What happens when the player exits this State?
@@ -20,8 +20,8 @@ func Process( _delta : float) -> State:
 		
 	player.velocity = player.direction * move_speed
 	
-	if player.SetDirection():
-		player.UpdateAnimation("Walk")
+	#if player.SetDirection():
+		#player.UpdateAnimation("Walk")
 	return null
 	
 # What happens during the _physics_process update in this State?
@@ -30,7 +30,7 @@ func Physics( _delta : float) -> State:
 	
 # What happens with input events in this State?
 func HandleInput( _event : InputEvent) -> State:
-	if _event.is_action_pressed("Attack"):
+	if _event.is_action_pressed("Mouse_left"):
 		return attack
 	if _event.is_action_pressed("Interact"):
 		PlayerManager.interact_pressed.emit()
