@@ -1,10 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://ul8pl55x2it6"]
+[gd_scene load_steps=5 format=4 uid="uid://ul8pl55x2it6"]
 
 [ext_resource type="PackedScene" uid="uid://d1qc3bqpdeor8" path="res://Tilemaps/Test_tilemap.tscn" id="1_s01ye"]
 [ext_resource type="PackedScene" uid="uid://c8ep5xc3p6gas" path="res://Player/player.tscn" id="2_t37kw"]
 [ext_resource type="Script" path="res://camera.gd" id="3_sf4im"]
 [ext_resource type="PackedScene" uid="uid://dpg70iovfvns4" path="res://Enemies/Godot_enemy.tscn" id="4_5ofag"]
-[ext_resource type="PackedScene" uid="uid://c0yfi12c7sh5o" path="res://Enemies/Aggro_godot.tscn" id="5_lwm7w"]
 
 [node name="Playground" type="Node2D"]
 
@@ -26,6 +25,3 @@ script = ExtResource("3_sf4im")
 
 [node name="GodotEnemy" parent="." instance=ExtResource("4_5ofag")]
 position = Vector2(128, 19)
-
-[node name="Aggro_Godot" parent="." instance=ExtResource("5_lwm7w")]
-position = Vector2(-45, -147)
