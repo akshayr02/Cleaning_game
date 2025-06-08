@@ -27,10 +27,20 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	direction = Vector2(
+
+	var raw_input = Vector2(
 		Input.get_axis("Left", "Right"),
 		Input.get_axis("Up", "Down")
-	).normalized()
+	)
+	# need to adjust the diagonal movements to be 22.5 degrees up or down from horizontal (instead of 45)
+	var x = raw_input.x
+	var y = raw_input.y
+
+	# Diagonal correction: skew diagonals to use half vertical strength
+	if x != 0 and y != 0:
+		direction = Vector2(x, y * 0.5).normalized()
+	else:
+		direction = Vector2(x, y).normalized()
 
 	if direction != Vector2.ZERO:
 		var new_direction_name = get_direction_name(direction)
@@ -121,6 +131,7 @@ func get_direction_name(dir: Vector2) -> String:
 		return "up"
 	else:
 		return "up-right"
+
 
 
 #func _physics_process(delta: float) -> void:
