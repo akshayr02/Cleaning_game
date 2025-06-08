@@ -12,6 +12,9 @@ var hearts : Array[HeartGUI] = []
 @onready var start: Custom_Button = $Control/MainMenu/Start
 @onready var main_menu: Control = $Control/MainMenu
 @onready var fade_to_black_all: ColorRect = $Control/FadeToBlackAll
+@onready var audio_main_menu: AudioStreamPlayer2D = $AudioMainMenu
+@onready var audio_game: AudioStreamPlayer2D = $AudioGame
+@onready var audio_game_over: AudioStreamPlayer2D = $AudioGameOver
 
 
 var is_paused : bool = false
@@ -65,7 +68,7 @@ func update_max_hp(_max_hp : int) -> void:
 func show_game_over_screen() -> void:
 	game_over.visible = true
 	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
-
+	audio_game.stop()
 	animation_player.play("Show_game_over")
 	await animation_player.animation_finished
 	retry.grab_focus()
@@ -81,18 +84,22 @@ func load_game() -> void:
 	await fade_all_to_black()
 	hide_game_over_screen()
 	get_tree().reload_current_scene()
-	await fade_all_from_black()	
+	await fade_all_from_black()
+	audio_main_menu.stop()	
+	audio_game.play()	
 	pass
 
 func load_main_menu() -> void:
 	await fade_all_to_black()
 	hide_game_over_screen()
 	show_main_menu()
+	audio_main_menu.play()
 	await fade_all_from_black()
 	pass
 
 func show_main_menu() -> void:
 	main_menu.visible = true
+	audio_main_menu.play()
 	animation_player.play("Show_main_menu")
 	await animation_player.animation_finished
 	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -109,6 +116,8 @@ func start_game() -> void:
 	reset()
 	get_tree().reload_current_scene()
 	await fade_all_from_black()
+	audio_main_menu.stop()
+	audio_game.play()	
 	pass
 
 func fade_all_to_black() -> bool:

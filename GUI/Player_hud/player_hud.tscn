@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://8mydylkpiows"]
+[gd_scene load_steps=22 format=3 uid="uid://8mydylkpiows"]
 
 [ext_resource type="Script" path="res://GUI/Player_hud/player_hud.gd" id="1_eo2rg"]
 [ext_resource type="Texture2D" uid="uid://qr4fe42nyaba" path="res://GUI/Player_hud/health_button.png" id="2_7yuhb"]
@@ -12,6 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://ph8ja3itmfn6" path="res://GUI/Player_hud/wave_hud.png" id="7_nepeu"]
 [ext_resource type="Script" path="res://GUI/Player_hud/button.gd" id="7_pu40f"]
 [ext_resource type="FontFile" uid="uid://fnv8tn6gclgm" path="res://GUI/Player_hud/RasterForgeRegular-JpBgm.ttf" id="8_2ppcp"]
+[ext_resource type="AudioStream" uid="uid://mwg085b8li1m" path="res://Music/Clement Panchout - Sweet 70s.wav" id="13_j6c1s"]
+[ext_resource type="AudioStream" uid="uid://p4cfd5pio8km" path="res://Music/title_music.mp3" id="14_xu66f"]
+[ext_resource type="AudioStream" uid="uid://dwmye26s20c82" path="res://Music/game-over.mp3" id="15_k43f3"]
 
 [sub_resource type="Animation" id="Animation_8mb3x"]
 resource_name = "Fade_all_from_black"
@@ -105,10 +108,22 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../AudioGameOver:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_d8egn"]
 resource_name = "Show_game_over"
-length = 2.0
+length = 2.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -120,6 +135,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../AudioGameOver:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.833333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_bb21w"]
@@ -318,6 +345,7 @@ vertical_alignment = 1
 process_mode = 3
 visible = false
 layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_bottom = -0.00012207
@@ -375,3 +403,15 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="AudioGame" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("13_j6c1s")
+
+[node name="AudioMainMenu" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("14_xu66f")
+
+[node name="AudioGameOver" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
+stream = ExtResource("15_k43f3")
