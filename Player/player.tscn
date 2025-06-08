@@ -695,19 +695,19 @@ hframes = 8
 vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14.218)
+position = Vector2(0, 54.383)
 scale = Vector2(0.899999, 0.689569)
 shape = SubResource("CircleShape2D_w4yue")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_lilh8")]
-position = Vector2(90, -14.218)
+position = Vector2(0, 31.65)
 collision_layer = 0
 collision_mask = 256
 damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 14.218)
-scale = Vector2(8.55425, 7.67882)
+position = Vector2(71.35, 0)
+scale = Vector2(6.654, 5.139)
 shape = SubResource("CircleShape2D_ngfrh")
 debug_color = Color(0.252094, 0.618903, 0.414165, 0.42)
 
@@ -716,7 +716,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 61.04)
+position = Vector2(0, 55.37)
 scale = Vector2(1, 0.82)
 shape = SubResource("CircleShape2D_3ljbe")
 debug_color = Color(0.897961, 0.293812, 0.302015, 0.42)

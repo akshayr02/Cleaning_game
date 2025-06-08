@@ -51,7 +51,7 @@ func Process( _delta : float) -> EnemyState:
 func Physics( _delta : float) -> EnemyState:
 	return null
 	
-func _on_enemy_destroyed(hurtbox : HurtBox) -> void:
+func _on_enemy_destroyed(hurtbox : Hurtbox) -> void:
 	_damage_position = hurtbox.global_position
 	
 	enemy_state_machine.ChangeState(self)
@@ -61,7 +61,7 @@ func _on_animation_finished( _a : String) -> void:
 	pass
 
 func disable_hurt_box() -> void:
-	var hurt_box: HurtBox = enemy.get_node_or_null("HurtBox")
+	var hurt_box: Hurtbox = enemy.get_node_or_null("HurtBox")
 	if hurt_box:
 		hurt_box.monitoring = false
 
