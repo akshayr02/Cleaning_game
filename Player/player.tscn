@@ -1,11 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" path="res://Player/player-sheet.png" id="2_v3ggh"]
-=======
 [ext_resource type="Texture2D" uid="uid://ctuhm5lsbgnox" path="res://Player/player-sheet.png" id="2_v3ggh"]
->>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
 [ext_resource type="PackedScene" uid="uid://bqktey4usedc8" path="res://GeneralNodes/Hurtbox/Hurtbox.tscn" id="3_lilh8"]
 [ext_resource type="PackedScene" uid="uid://cr8dpfycdpss7" path="res://GeneralNodes/Hitbox/Hitbox.tscn" id="4_ob1j3"]
 [ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="5_6m7q1"]

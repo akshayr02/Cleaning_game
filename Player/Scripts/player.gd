@@ -79,12 +79,10 @@ func _process(_delta: float) -> void:
 			DirectionChanged.emit(current_direction_name)
 
 		animation_player.play(standing_direction_name)
-<<<<<<< HEAD
-=======
+
 
 		melee_timer += _delta
 		shoot_timer += _delta
->>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
 		
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
