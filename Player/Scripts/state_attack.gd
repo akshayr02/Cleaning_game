@@ -63,10 +63,10 @@ func Exit() -> void:
 func Process( _delta : float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
 
+
 	timer -= _delta;
 	if timer < 0:
 		attacking = false
-
 		
 	if attacking == false:
 		if player.direction == Vector2.ZERO:
