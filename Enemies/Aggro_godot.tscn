@@ -44,6 +44,7 @@ debug_color = Color(0.845376, 0.345694, 0.409465, 0.42)
 [node name="Hurtbox" parent="." instance=ExtResource("4_udcna")]
 collision_layer = 0
 collision_mask = 2
+damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1.19209e-07, 9)
