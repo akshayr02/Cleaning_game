@@ -6,6 +6,9 @@ var player : Player
 var player_spawned : bool = false
 
 signal interact_pressed
+signal max_enemies_wave
+signal no_more_enemies
+signal count_reset
 
 func _ready() -> void:
 	#add_player_instance()

@@ -17,7 +17,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxlmc"]
 
 [node name="Aggro_Godot" type="CharacterBody2D"]
-scale = Vector2(0.661554, 0.69968)
+scale = Vector2(0.197309, 0.20868)
+collision_layer = 256
+collision_mask = 49
 script = ExtResource("1_w7joe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -42,6 +44,7 @@ debug_color = Color(0.845376, 0.345694, 0.409465, 0.42)
 [node name="Hurtbox" parent="." instance=ExtResource("4_udcna")]
 collision_layer = 0
 collision_mask = 2
+damage = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1.19209e-07, 9)

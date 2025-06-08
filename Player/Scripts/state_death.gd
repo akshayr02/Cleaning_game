@@ -10,10 +10,12 @@ func init() -> void:
 # What happens when the player enters this State?
 func Enter() -> void:
 	player.animation_player.play("Death")
+	await player.animation_player.animation_finished
 	#audio.stream = exhaust_audio
 	#audio.play()
 	
-#	Triger Game Over UI
+#	Trigger Game Over UI
+	PlayerHud.show_game_over_screen()
 	#AudioManager.player_music(null)
 	pass
 

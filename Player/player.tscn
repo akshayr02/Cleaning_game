@@ -1,7 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://c8ep5xc3p6gas"]
+[gd_scene load_steps=35 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
-[ext_resource type="Texture2D" uid="uid://b0qxj01aq033f" path="res://Player/player-unarmed-full-2.png" id="2_3qkvt"]
+[ext_resource type="Texture2D" uid="uid://ctuhm5lsbgnox" path="res://Player/player-sheet.png" id="2_v3ggh"]
 [ext_resource type="PackedScene" uid="uid://bqktey4usedc8" path="res://GeneralNodes/Hurtbox/Hurtbox.tscn" id="3_lilh8"]
 [ext_resource type="PackedScene" uid="uid://cr8dpfycdpss7" path="res://GeneralNodes/Hitbox/Hitbox.tscn" id="4_ob1j3"]
 [ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="5_6m7q1"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://Player/Scripts/state_stun.gd" id="7_o2rft"]
 [ext_resource type="Script" path="res://Player/Scripts/state_attack.gd" id="8_4k258"]
 [ext_resource type="Script" path="res://Player/Scripts/state_death.gd" id="10_q5hhq"]
+[ext_resource type="Script" path="res://Player/Scripts/state_shoot.gd" id="11_xv31y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yue"]
 radius = 66.0076
@@ -396,29 +397,29 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
 scale = Vector2(0.2, 0.211)
-collision_mask = 16
+collision_mask = 48
 script = ExtResource("1_oo8v5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_3qkvt")
+texture = ExtResource("2_v3ggh")
 hframes = 8
-vframes = 5
+vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 14.218)
+position = Vector2(0, 54.383)
 scale = Vector2(0.899999, 0.689569)
 shape = SubResource("CircleShape2D_w4yue")
 
 [node name="Hurtbox" parent="." instance=ExtResource("3_lilh8")]
-position = Vector2(90, -14.218)
+position = Vector2(0, 31.65)
 collision_layer = 0
 collision_mask = 256
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 14.218)
-scale = Vector2(8.55425, 7.67882)
+position = Vector2(71.35, 0)
+scale = Vector2(6.654, 5.139)
 shape = SubResource("CircleShape2D_ngfrh")
 debug_color = Color(0.252094, 0.618903, 0.414165, 0.42)
 
@@ -427,7 +428,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, 61.04)
+position = Vector2(0, 55.37)
 scale = Vector2(1, 0.82)
 shape = SubResource("CircleShape2D_3ljbe")
 debug_color = Color(0.897961, 0.293812, 0.302015, 0.42)
@@ -449,6 +450,9 @@ script = ExtResource("8_4k258")
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("10_q5hhq")
+
+[node name="Shooting" type="Node" parent="StateMachine"]
+script = ExtResource("11_xv31y")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {

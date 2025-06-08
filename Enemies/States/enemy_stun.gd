@@ -53,7 +53,7 @@ func Process( _delta : float) -> EnemyState:
 func Physics( _delta : float) -> EnemyState:
 	return null
 	
-func _on_enemy_damaged(_hurtbox : HurtBox) -> void:
+func _on_enemy_damaged(_hurtbox : Hurtbox) -> void:
 	_damage_position = _hurtbox.global_position
 	enemy_state_machine.ChangeState(self)
 

@@ -1,9 +1,9 @@
 class_name Enemy extends CharacterBody2D
 
 signal direction_changed(new_direction : Vector2)
-signal enemy_damaged(hurtbox : HurtBox)
+signal enemy_damaged(hurtbox : Hurtbox)
 const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
-signal enemy_destroyed(hurtbox : HurtBox)
+signal enemy_destroyed(hurtbox : Hurtbox)
 
 @export var hp : int = 3
 @export var max_hp : int = 3
@@ -12,7 +12,6 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invulnerable : bool = false
-
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
@@ -65,7 +64,7 @@ func AnimDirection() -> String:
 	else:
 		return "side"
 		
-func _take_damage(_hurtbox : HurtBox) -> void:
+func _take_damage(_hurtbox : Hurtbox) -> void:
 	if invulnerable == true:
 		return
 	hp -= _hurtbox.damage
@@ -74,5 +73,5 @@ func _take_damage(_hurtbox : HurtBox) -> void:
 		print("damaged")
 		enemy_damaged.emit(_hurtbox)
 	else:
-		#print("destroyed")
+		print("destroyed")
 		enemy_destroyed.emit(_hurtbox)
