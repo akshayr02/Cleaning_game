@@ -42,12 +42,18 @@ func Exit() -> void:
 func Process( _delta : float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> afbafd6 (attack timer is 1 second, need animations and shoot attack stuff)
 	
 	timer -= _delta;
 	if timer < 0:
 		attacking = false
+<<<<<<< HEAD
 =======
 >>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
+=======
+>>>>>>> afbafd6 (attack timer is 1 second, need animations and shoot attack stuff)
 		
 	if attacking == false:
 		if player.direction == Vector2.ZERO:
