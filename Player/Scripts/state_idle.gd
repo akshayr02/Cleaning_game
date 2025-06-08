@@ -26,7 +26,7 @@ func Physics( _delta : float) -> State:
 	
 # What happens with input events in this State?
 func HandleInput( _event : InputEvent) -> State:
-	if _event.is_action_pressed("Mouse_left"):
+	if _event.is_action_pressed("Melee"):
 		return attack
 	if _event.is_action_pressed("Interact"):
 		PlayerManager.interact_pressed.emit()

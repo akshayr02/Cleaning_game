@@ -7,12 +7,12 @@ func _ready() -> void:
 	area_entered.connect(AreaEntered)
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
 
 func AreaEntered(a : Area2D) -> void:
-	if a is Hitbox:
-		a.TakeDamage(self)
+	if visible:
+		if a is Hitbox:
+			a.TakeDamage(self)
 	pass

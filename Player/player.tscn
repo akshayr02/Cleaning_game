@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
-[ext_resource type="Texture2D" uid="uid://b0qxj01aq033f" path="res://Player/player-unarmed-full-2.png" id="2_3qkvt"]
+[ext_resource type="Texture2D" uid="uid://ctuhm5lsbgnox" path="res://Player/player-sheet.png" id="2_v3ggh"]
 [ext_resource type="PackedScene" uid="uid://bqktey4usedc8" path="res://GeneralNodes/Hurtbox/Hurtbox.tscn" id="3_lilh8"]
 [ext_resource type="PackedScene" uid="uid://cr8dpfycdpss7" path="res://GeneralNodes/Hitbox/Hitbox.tscn" id="4_ob1j3"]
 [ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="5_6m7q1"]
@@ -402,9 +402,9 @@ script = ExtResource("1_oo8v5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
-texture = ExtResource("2_3qkvt")
+texture = ExtResource("2_v3ggh")
 hframes = 8
-vframes = 5
+vframes = 9
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 54.383)
@@ -449,6 +449,8 @@ script = ExtResource("8_4k258")
 
 [node name="Death" type="Node" parent="StateMachine"]
 script = ExtResource("10_q5hhq")
+
+[node name="Shooting" type="Node" parent="StateMachine"]
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {

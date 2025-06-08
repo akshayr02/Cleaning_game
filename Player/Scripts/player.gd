@@ -18,6 +18,16 @@ var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
 
+# cooldowns for each attack
+@export var melee_cooldown : float = 0.5
+@export var melee_duration : float = 0.2  # how long should the "attack" actually happen
+@export var shoot_cooldown : float = 1
+@export var shoot_burst_count : int = 3 # how many boolets in burst fire
+@export var shoot_burst_spacing : float = 0.1 # time between burst shots
+# use in conjunction with cooldowns to decide if player is allowed again
+var melee_timer : float = 0.5
+var shoot_timer : float = 1
+
 var attack_direction_angles = {"right" : 0,
 		"down-right": 22.5,
 		"down": 90,
@@ -70,7 +80,9 @@ func _process(_delta: float) -> void:
 
 		animation_player.play(standing_direction_name)
 
-
+		melee_timer += _delta
+		shoot_timer += _delta
+		
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
@@ -132,8 +144,6 @@ func get_direction_name(dir: Vector2) -> String:
 		return "up"
 	else:
 		return "up-right"
-
-
 
 #func _physics_process(delta: float) -> void:
 	#var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
