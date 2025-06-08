@@ -1,8 +1,9 @@
 class_name State_Walk extends State
 
 @export var move_speed : float = 100.0
-@onready var idle: State = $"../Idle"
+@onready var idle: State_Idle = $"../Idle"
 @onready var attack: State_Attack = $"../Attack"
+@onready var shooting: State_Shoot = $"../Shooting"
 
 # What happens when the player enters this State?
 func Enter() -> void:
@@ -32,6 +33,8 @@ func Physics( _delta : float) -> State:
 func HandleInput( _event : InputEvent) -> State:
 	if _event.is_action_pressed("Melee"):
 		return attack
+	if _event.is_action_pressed("Shoot"):
+		return shooting
 	if _event.is_action_pressed("Interact"):
 		PlayerManager.interact_pressed.emit()
 	return null
