@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8ep5xc3p6gas"]
+[gd_scene load_steps=51 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
 [ext_resource type="Texture2D" uid="uid://ctuhm5lsbgnox" path="res://Player/player-sheet.png" id="2_v3ggh"]
@@ -33,7 +33,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.796515, 0.324279, 0.278695, 0.568627)]
+"values": [Color(1, 1, 1, 1), Color(0.998824, 0, 0.181992, 0.568627)]
 }
 
 [sub_resource type="Animation" id="Animation_3qqui"]
@@ -127,6 +127,40 @@ tracks/0/keys = {
 "values": [Vector2i(6, 1), Vector2i(6, 2), Vector2i(6, 3), Vector2i(6, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_bt1kl"]
+resource_name = "down-left-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(6, 7), Vector2i(6, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_6xuod"]
+resource_name = "down-left-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(6, 5), Vector2i(6, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_vxgxn"]
 resource_name = "down-left-standing"
 length = 0.1
@@ -142,6 +176,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(6, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_euca2"]
+resource_name = "down-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(5, 7), Vector2i(5, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_cp32u"]
@@ -162,6 +213,40 @@ tracks/0/keys = {
 "values": [Vector2i(4, 1), Vector2i(4, 2), Vector2i(4, 3), Vector2i(4, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_6537x"]
+resource_name = "down-right-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(4, 7), Vector2i(4, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_yfdi1"]
+resource_name = "down-right-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(4, 5), Vector2i(3, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_khvl0"]
 resource_name = "down-right-standing"
 length = 0.1
@@ -177,6 +262,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(4, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vs2ma"]
+resource_name = "down-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(5, 5), Vector2i(5, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_7vttk"]
@@ -214,6 +316,40 @@ tracks/0/keys = {
 "values": [Vector2i(7, 1), Vector2i(7, 2), Vector2i(7, 3), Vector2i(7, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_3pm5r"]
+resource_name = "left-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(7, 7), Vector2i(7, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_gou8j"]
+resource_name = "left-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(7, 5), Vector2i(7, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_a1vwb"]
 resource_name = "left-standing"
 length = 0.1
@@ -247,6 +383,40 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(3, 1), Vector2i(3, 2), Vector2i(3, 3), Vector2i(3, 4)]
+}
+
+[sub_resource type="Animation" id="Animation_gmnh2"]
+resource_name = "right-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(3, 7), Vector2i(3, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_x5as3"]
+resource_name = "right-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(3, 5), Vector2i(3, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_tyd1e"]
@@ -301,6 +471,40 @@ tracks/0/keys = {
 "values": [Vector2i(0, 1), Vector2i(0, 2), Vector2i(0, 3), Vector2i(0, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_8mqki"]
+resource_name = "up-left-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 7), Vector2i(0, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_42gq5"]
+resource_name = "up-left-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(0, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_8iwy4"]
 resource_name = "up-left-standing"
 length = 0.1
@@ -317,6 +521,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d7nxj"]
+resource_name = "up-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 7), Vector2i(1, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_tfm4g"]
@@ -337,6 +558,40 @@ tracks/0/keys = {
 "values": [Vector2i(2, 1), Vector2i(2, 2), Vector2i(2, 3), Vector2i(2, 4)]
 }
 
+[sub_resource type="Animation" id="Animation_5wrv6"]
+resource_name = "up-right-melee"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 7), Vector2i(2, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_kf0r6"]
+resource_name = "up-right-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(2, 5), Vector2i(2, 6)]
+}
+
 [sub_resource type="Animation" id="Animation_5laxk"]
 resource_name = "up-right-standing"
 length = 0.1
@@ -352,6 +607,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2i(2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_noexs"]
+resource_name = "up-shoot"
+length = 0.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2i(1, 5), Vector2i(1, 6)]
 }
 
 [sub_resource type="Animation" id="Animation_akryl"]
@@ -378,19 +650,35 @@ _data = {
 "Stun": SubResource("Animation_m5c21"),
 "down": SubResource("Animation_5t3i7"),
 "down-left": SubResource("Animation_ljieg"),
+"down-left-melee": SubResource("Animation_bt1kl"),
+"down-left-shoot": SubResource("Animation_6xuod"),
 "down-left-standing": SubResource("Animation_vxgxn"),
+"down-melee": SubResource("Animation_euca2"),
 "down-right": SubResource("Animation_cp32u"),
+"down-right-melee": SubResource("Animation_6537x"),
+"down-right-shoot": SubResource("Animation_yfdi1"),
 "down-right-standing": SubResource("Animation_khvl0"),
+"down-shoot": SubResource("Animation_vs2ma"),
 "down-standing": SubResource("Animation_7vttk"),
 "left": SubResource("Animation_am21c"),
+"left-melee": SubResource("Animation_3pm5r"),
+"left-shoot": SubResource("Animation_gou8j"),
 "left-standing": SubResource("Animation_a1vwb"),
 "right": SubResource("Animation_edaap"),
+"right-melee": SubResource("Animation_gmnh2"),
+"right-shoot": SubResource("Animation_x5as3"),
 "right-standing": SubResource("Animation_tyd1e"),
 "up": SubResource("Animation_6sc3a"),
 "up-left": SubResource("Animation_ko1xx"),
+"up-left-melee": SubResource("Animation_8mqki"),
+"up-left-shoot": SubResource("Animation_42gq5"),
 "up-left-standing": SubResource("Animation_8iwy4"),
+"up-melee": SubResource("Animation_d7nxj"),
 "up-right": SubResource("Animation_tfm4g"),
+"up-right-melee": SubResource("Animation_5wrv6"),
+"up-right-shoot": SubResource("Animation_kf0r6"),
 "up-right-standing": SubResource("Animation_5laxk"),
+"up-shoot": SubResource("Animation_noexs"),
 "up-standing": SubResource("Animation_akryl")
 }
 
