@@ -17,10 +17,10 @@ func Enter() -> void:
 	direction = player.global_position.direction_to(hurtbox.global_position)
 	player.velocity = direction * -knockback_speed
 	
-	#player.SetDirection()
+	#player.SetDirection(player.direction)
 	player.UpdateAnimation("Stun")
 	player.make_invulnerable(invulnerable_duration)
-	#player.effect_animation_player.play("Damaged")
+	player.effect_animation_player.play("Damaged")
 	
 	pass
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c8ep5xc3p6gas"]
+[gd_scene load_steps=34 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
 [ext_resource type="Texture2D" uid="uid://ctuhm5lsbgnox" path="res://Player/player-sheet.png" id="2_v3ggh"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://Player/Scripts/state_stun.gd" id="7_o2rft"]
 [ext_resource type="Script" path="res://Player/Scripts/state_attack.gd" id="8_4k258"]
 [ext_resource type="Script" path="res://Player/Scripts/state_death.gd" id="10_q5hhq"]
-[ext_resource type="Script" path="res://Player/Scripts/state_shoot.gd" id="11_xv31y"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yue"]
 radius = 66.0076
@@ -452,7 +451,6 @@ script = ExtResource("8_4k258")
 script = ExtResource("10_q5hhq")
 
 [node name="Shooting" type="Node" parent="StateMachine"]
-script = ExtResource("11_xv31y")
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 libraries = {
