@@ -82,8 +82,6 @@ func _process(_delta: float) -> void:
 
 
 
-
-		a7ec6852c1756c4473a133b8fae213b64268eb11
 		melee_timer += _delta
 		shoot_timer += _delta
 		

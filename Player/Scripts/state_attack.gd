@@ -43,12 +43,9 @@ func Process( _delta : float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
 
 
-
 	timer -= _delta;
 	if timer < 0:
 		attacking = false
-	
-	a7ec6852c1756c4473a133b8fae213b64268eb11
 		
 	if attacking == false:
 		if player.direction == Vector2.ZERO:
