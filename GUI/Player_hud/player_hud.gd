@@ -7,6 +7,8 @@ var hearts : Array[HeartGUI] = []
 @onready var retry: Button = $Control/GameOver/ColorRect/VBoxContainer/Retry
 @onready var main_menu: Button = $Control/GameOver/ColorRect/VBoxContainer/MainMenu
 @onready var animation_player: AnimationPlayer = $Control/GameOver/AnimationPlayer
+@onready var wave_label: Label = $Bot_panel/Wave_label
+@onready var enemies_label: Label = $Bot_panel/Enemies_label
 
 
 var is_paused : bool = false
@@ -96,3 +98,10 @@ func fade_to_black() -> bool:
 	animation_player.play("Fade_to_black")
 	await animation_player.animation_finished
 	return true
+
+func set_label_text(text, label_name) -> void:
+	if label_name == "wave":
+		wave_label.text = text
+	elif label_name == "enemies":
+		enemies_label.text = text
+	pass

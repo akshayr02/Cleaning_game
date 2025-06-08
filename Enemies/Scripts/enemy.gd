@@ -12,7 +12,6 @@ var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 var player : Player
 var invulnerable : bool = false
-
 #@onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy_state_machine: EnemyStateMachine = $EnemyStateMachine
@@ -74,5 +73,5 @@ func _take_damage(_hurtbox : HurtBox) -> void:
 		print("damaged")
 		enemy_damaged.emit(_hurtbox)
 	else:
-		#print("destroyed")
+		print("destroyed")
 		enemy_destroyed.emit(_hurtbox)

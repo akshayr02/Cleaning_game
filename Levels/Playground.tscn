@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=4 uid="uid://ul8pl55x2it6"]
+[gd_scene load_steps=6 format=4 uid="uid://ul8pl55x2it6"]
 
 [ext_resource type="Script" path="res://Levels/level.gd" id="1_5wjn6"]
 [ext_resource type="PackedScene" uid="uid://d1qc3bqpdeor8" path="res://Tilemaps/Test_tilemap.tscn" id="2_f5jl1"]
 [ext_resource type="PackedScene" uid="uid://c8ep5xc3p6gas" path="res://Player/player.tscn" id="3_8jg7u"]
 [ext_resource type="Script" path="res://camera.gd" id="4_jbih8"]
-[ext_resource type="PackedScene" uid="uid://dpg70iovfvns4" path="res://Enemies/Godot_enemy.tscn" id="5_vyr88"]
 [ext_resource type="PackedScene" uid="uid://cl3ispgs4ge8e" path="res://Enemies/EnemySpawner.tscn" id="6_8ygf7"]
 
 [node name="Playground" type="Node2D"]
 script = ExtResource("1_5wjn6")
+wave_timer = 1
 
 [node name="Test_tilemap" parent="." instance=ExtResource("2_f5jl1")]
 y_sort_enabled = true
@@ -25,9 +25,6 @@ position = Vector2(-100, 37)
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(4, 4)
 script = ExtResource("4_jbih8")
-
-[node name="GodotEnemy" parent="." instance=ExtResource("5_vyr88")]
-position = Vector2(128, 19)
 
 [node name="EnemySpawner" parent="." instance=ExtResource("6_8ygf7")]
 position = Vector2(-57, -11)

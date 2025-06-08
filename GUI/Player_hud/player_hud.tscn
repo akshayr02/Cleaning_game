@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://8mydylkpiows"]
+[gd_scene load_steps=9 format=3 uid="uid://8mydylkpiows"]
 
 [ext_resource type="Script" path="res://GUI/Player_hud/player_hud.gd" id="1_eo2rg"]
 [ext_resource type="Texture2D" uid="uid://bblkiqcf0p726" path="res://GUI/Player_hud/gui-health.png" id="2_uoacw"]
@@ -68,6 +68,13 @@ _data = {
 "RESET": SubResource("Animation_65vdm"),
 "Show_game_over": SubResource("Animation_d8egn")
 }
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gftf4"]
+border_width_left = 1
+border_width_top = 2
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
 
 [node name="PlayerHud" type="CanvasLayer"]
 script = ExtResource("1_eo2rg")
@@ -189,3 +196,41 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="Bot_panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(350, 10)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 802.0
+offset_top = -83.0
+offset_right = 842.0
+offset_bottom = -43.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_gftf4")
+
+[node name="Wave_label" type="Label" parent="Bot_panel"]
+layout_mode = 0
+offset_left = 1.04896
+offset_top = 1.25002
+offset_right = 218.049
+offset_bottom = 58.25
+scale = Vector2(0.655547, 0.65)
+theme_override_font_sizes/font_size = 31
+text = "Day: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Enemies_label" type="Label" parent="Bot_panel"]
+layout_mode = 0
+offset_left = 187.0
+offset_top = 1.00002
+offset_right = 404.0
+offset_bottom = 58.0
+scale = Vector2(0.655547, 0.65)
+theme_override_font_sizes/font_size = 31
+text = "Enemies: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
