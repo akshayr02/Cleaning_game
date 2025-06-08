@@ -1,8 +1,8 @@
 class_name Player extends CharacterBody2D
 
-var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
-const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
+var last_direction : Vector2 = Vector2.RIGHT  # Default facing right
+var current_direction_name := ""
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var state_machine: PlayerStateMachine = $StateMachine
@@ -10,13 +10,12 @@ const DIR_4 = [Vector2.RIGHT, Vector2.DOWN, Vector2.LEFT, Vector2.UP]
 @onready var hitbox: Hitbox = $Hitbox
 #@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
-signal DirectionChanged(new_direction: Vector2)
+signal DirectionChanged(new_direction_name: String)
 signal player_damaged(hurtbox : HurtBox)
 
 var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -26,35 +25,42 @@ func _ready() -> void:
 	update_hp(99)
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	#direction.x = Input.get_action_strength("Right") - Input.get_action_strength("Left")
-	#direction.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
-	
 	direction = Vector2(
 		Input.get_axis("Left", "Right"),
 		Input.get_axis("Up", "Down")
-		).normalized()
-	pass
+	).normalized()
+
+	if direction != Vector2.ZERO:
+		var new_direction_name = get_direction_name(direction)
+
+		if new_direction_name != current_direction_name:
+			current_direction_name = new_direction_name
+			DirectionChanged.emit(current_direction_name)
+
+		last_direction = direction
+		animation_player.play(new_direction_name)
+	else:
+		var standing_direction_name = get_direction_name(last_direction) + "-standing"
+		if standing_direction_name != current_direction_name:
+			current_direction_name = standing_direction_name
+			DirectionChanged.emit(current_direction_name)
+
+		animation_player.play(standing_direction_name)
+
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
-	
 	
 func SetDirection() -> bool:
 	if direction == Vector2.ZERO:
 		return false
 	
-	var direction_id : int = int(round((direction + cardinal_direction * 0.1).angle()/TAU * DIR_4.size()))
-	var new_dir = DIR_4[direction_id]	
+	var direction_angle = direction.angle_to(Vector2.LEFT + Vector2.UP)
+	var direction_id = (direction_angle+2)%45 - 1
 	
-	if new_dir == cardinal_direction:
-		return false
-	cardinal_direction = new_dir
-	
-	DirectionChanged.emit(new_dir)
-	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
+	DirectionChanged.emit(direction_id)
 	return true
 
 func UpdateAnimation( state : String) -> void:
@@ -62,14 +68,6 @@ func UpdateAnimation( state : String) -> void:
 	animation_player.play(state)
 	pass
 	
-func AnimDirection() -> String:
-	if cardinal_direction == Vector2.DOWN:
-		return "down"
-	elif cardinal_direction == Vector2.UP:
-		return "up"
-	else:
-		return "side"
-
 func _take_damage(hurtbox : HurtBox) -> void:
 	if invulnerable:
 		return
@@ -98,6 +96,32 @@ func _unhandled_input(event: InputEvent) -> void:
 		update_hp(-99)
 		player_damaged.emit($Hurtbox)
 	pass
+
+# this is so fucking stupid but it works
+func get_direction_name(dir: Vector2) -> String:
+	var angle = dir.angle()
+	var deg = rad_to_deg(angle)
+
+	if deg < 0:
+		deg += 360
+
+	if deg >= 337.5 or deg < 22.5:
+		return "right"
+	elif deg < 67.5:
+		return "down-right"
+	elif deg < 112.5:
+		return "down"
+	elif deg < 157.5:
+		return "down-left"
+	elif deg < 202.5:
+		return "left"
+	elif deg < 247.5:
+		return "up-left"
+	elif deg < 292.5:
+		return "up"
+	else:
+		return "up-right"
+
 
 #func _physics_process(delta: float) -> void:
 	#var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
