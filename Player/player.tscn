@@ -12,10 +12,10 @@
 [ext_resource type="Script" path="res://Player/Scripts/state_death.gd" id="10_q5hhq"]
 [ext_resource type="Script" path="res://Player/Scripts/state_shoot.gd" id="11_xv31y"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ngfrh"]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_w4yue"]
 radius = 66.0076
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_ngfrh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3ljbe"]
 radius = 60.0856
@@ -688,6 +688,18 @@ scale = Vector2(0.2, 0.211)
 collision_mask = 48
 script = ExtResource("1_oo8v5")
 
+[node name="Hurtbox" parent="." instance=ExtResource("3_lilh8")]
+position = Vector2(0, 31.65)
+scale = Vector2(1, 1)
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(71.35, 0)
+scale = Vector2(6.654, 5.139)
+shape = SubResource("CircleShape2D_ngfrh")
+debug_color = Color(0.252094, 0.618903, 0.414165, 0.42)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(4, 4)
@@ -699,17 +711,6 @@ vframes = 9
 position = Vector2(0, 54.383)
 scale = Vector2(0.899999, 0.689569)
 shape = SubResource("CircleShape2D_w4yue")
-
-[node name="Hurtbox" parent="." instance=ExtResource("3_lilh8")]
-position = Vector2(0, 31.65)
-collision_layer = 0
-collision_mask = 256
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(71.35, 0)
-scale = Vector2(6.654, 5.139)
-shape = SubResource("CircleShape2D_ngfrh")
-debug_color = Color(0.252094, 0.618903, 0.414165, 0.42)
 
 [node name="Hitbox" parent="." instance=ExtResource("4_ob1j3")]
 collision_layer = 2
