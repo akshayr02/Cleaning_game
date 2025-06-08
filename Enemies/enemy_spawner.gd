@@ -11,7 +11,9 @@ var enemies_count: int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	enemies_count = 0
 	PlayerManager.max_enemies_wave.connect(enemy_max)
+	PlayerManager.count_reset.connect(reset)
 	for i in get_children():
 		if i is Marker2D:
 			print(i.position)
@@ -31,8 +33,10 @@ func _on_timer_timeout() -> void:
 		#main.add_child((enemy))
 	else:
 		PlayerManager.no_more_enemies.emit()
-		enemies_count = 0
 	pass # Replace with function body.
 
 func enemy_max(num) -> void:
 	max_enemies = num
+	
+func reset() -> void:
+	enemies_count = 0

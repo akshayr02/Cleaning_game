@@ -12,7 +12,7 @@ func _ready() -> void:
 	PlayerHud.reset()
 	max_enemies = 2
 	wave = 1
-	PlayerHud.set_label_text("Wave: " + str(wave), "wave")
+	PlayerHud.set_label_text("Day: " + str(wave), "wave")
 	PlayerHud.set_label_text("Enemies: " + str(max_enemies), "enemies")
 	PlayerManager.max_enemies_wave.emit(max_enemies)
 	PlayerManager.no_more_enemies.connect(enemies_stopped)
@@ -41,11 +41,11 @@ func _process(_delta):
 func wave_reset() -> void:
 	print("wave_reset")
 	wave += 1
-	max_enemies += 2
-	PlayerHud.set_label_text("Wave: " + str(wave), "wave")
+	max_enemies *= 2
+	PlayerHud.set_label_text("Day: " + str(wave), "wave")
 	PlayerHud.set_label_text("Enemies: " + str(max_enemies), "enemies")
-	PlayerManager.no_more_enemies.disconnect(enemies_stopped)
 	is_enemies_stopped = false
+	PlayerManager.count_reset.emit()
 	PlayerManager.max_enemies_wave.emit(max_enemies)
 	pass
 
