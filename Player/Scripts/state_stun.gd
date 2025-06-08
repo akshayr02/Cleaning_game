@@ -20,7 +20,6 @@ func Enter() -> void:
 	#player.SetDirection(player.direction)
 	player.UpdateAnimation("Stun")
 	player.make_invulnerable(invulnerable_duration)
-	player.effect_animation_player.play("Damaged")
 	
 	pass
 

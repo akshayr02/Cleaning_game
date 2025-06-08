@@ -1,4 +1,4 @@
-class_name State_Attack extends State
+class_name State_Shoot extends State
 
 var attacking : bool = false
 @export var attack_time : float = 0.2
@@ -17,7 +17,8 @@ var timer : float = 1
 
 # What happens when the player enters this State?
 func Enter() -> void:
-	print("in state attack")
+	#figure out player direction
+	print("in state shoot")
 	var player_dir
 	print(player.direction)
 	if player.direction.x == 1:
@@ -39,7 +40,8 @@ func Enter() -> void:
 			player_dir = "left" 
 		else:
 			player_dir = "down-left"
-	player.UpdateAnimation(player_dir + "-melee")
+	player.UpdateAnimation(player_dir + "-shoot")
+	#attack_anim.play("Attack_" + player.AnimDirection())
 	#animation_player2.animation_finished.connect(EndAttack)
 	
 	#audio.stream = attack_sound
@@ -62,14 +64,10 @@ func Exit() -> void:
 # What happens during the _process update in this State?
 func Process( _delta : float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
-
-
-
+	
 	timer -= _delta;
 	if timer < 0:
 		attacking = false
-	
-	a7ec6852c1756c4473a133b8fae213b64268eb11
 		
 	if attacking == false:
 		if player.direction == Vector2.ZERO:
