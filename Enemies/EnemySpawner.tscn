@@ -6,16 +6,16 @@
 script = ExtResource("1_s2eg7")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -240)
+position = Vector2(-1, -117)
 
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(457, 0)
+position = Vector2(266, 1)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(0, 254)
+position = Vector2(-2, 177)
 
 [node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(-435, 0)
+position = Vector2(-291, 0)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
