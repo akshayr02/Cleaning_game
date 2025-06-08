@@ -17,8 +17,29 @@ var timer : float = 1
 
 # What happens when the player enters this State?
 func Enter() -> void:
-	player.UpdateAnimation("Attack")
-	#attack_anim.play("Attack_" + player.AnimDirection())
+	print("in state attack")
+	var player_dir
+	print(player.direction)
+	if player.direction.x == 1:
+		if player.direction.y == 1:
+			player_dir = "up-right" 
+		elif player.direction.y == 0:
+			player_dir = "right" 
+		else:
+			player_dir = "down-right"
+	elif player.direction.x == 0:
+		if player.direction.y == 1:
+			player_dir = "up"
+		else:
+			player_dir = "down"
+	else:	
+		if player.direction.y == 1:
+			player_dir = "up-left" 
+		if player.direction.y == 0:
+			player_dir = "left" 
+		else:
+			player_dir = "down-left"
+	player.UpdateAnimation(player_dir + "-melee")
 	#animation_player2.animation_finished.connect(EndAttack)
 	
 	#audio.stream = attack_sound
