@@ -18,6 +18,28 @@ var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
 
+<<<<<<< HEAD
+=======
+# cooldowns for each attack
+@export var melee_cooldown : float = 0.5
+@export var melee_duration : float = 0.2  # how long should the "attack" actually happen
+@export var shoot_cooldown : float = 1
+@export var shoot_burst_count : int = 3 # how many boolets in burst fire
+@export var shoot_burst_spacing : float = 0.1 # time between burst shots
+# use in conjunction with cooldowns to decide if player is allowed again
+var melee_timer : float = 0.5
+var shoot_timer : float = 1
+
+var attack_direction_angles = {"right" : 0,
+		"down-right": 22.5,
+		"down": 90,
+		"down-left": 157.5,
+		"left" : 180,
+		"up-left": 202.5,
+		"up": 270,
+		"up-right": 346.5}
+
+>>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	PlayerManager.player = self
@@ -60,7 +82,9 @@ func _process(_delta: float) -> void:
 
 		animation_player.play(standing_direction_name)
 
-
+		melee_timer += _delta
+		shoot_timer += _delta
+		
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
@@ -132,8 +156,6 @@ func get_direction_name(dir: Vector2) -> String:
 		return "up"
 	else:
 		return "up-right"
-
-
 
 #func _physics_process(delta: float) -> void:
 	#var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
