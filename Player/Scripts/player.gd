@@ -18,6 +18,16 @@ var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
 
+# cooldowns for each attack
+@export var melee_cooldown : float = 0.5
+@export var melee_duration : float = 0.2  # how long should the "attack" actually happen
+@export var shoot_cooldown : float = 1
+@export var shoot_burst_count : int = 3 # how many boolets in burst fire
+@export var shoot_burst_spacing : float = 0.1 # time between burst shots
+# use in conjunction with cooldowns to decide if player is allowed again
+var melee_timer : float = 0.5
+var shoot_timer : float = 1
+
 var attack_direction_angles = {"right" : 0,
 		"down-right": 22.5,
 		"down": 90,
@@ -69,6 +79,12 @@ func _process(_delta: float) -> void:
 			DirectionChanged.emit(current_direction_name)
 
 		animation_player.play(standing_direction_name)
+<<<<<<< HEAD
+=======
+
+		melee_timer += _delta
+		shoot_timer += _delta
+>>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
 		
 func _physics_process(_delta: float) -> void:
 	move_and_slide()

@@ -41,10 +41,13 @@ func Exit() -> void:
 # What happens during the _process update in this State?
 func Process( _delta : float) -> State:
 	player.velocity -= player.velocity * decelerate_speed * _delta
+<<<<<<< HEAD
 	
 	timer -= _delta;
 	if timer < 0:
 		attacking = false
+=======
+>>>>>>> faa9cd8 (player cannot exit attack state not sure how to)
 		
 	if attacking == false:
 		if player.direction == Vector2.ZERO:
