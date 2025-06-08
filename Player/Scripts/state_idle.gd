@@ -1,7 +1,8 @@
 class_name State_Idle extends State
 
-@onready var walk: State = $"../Walk"
-@onready var attack: State = $"../Attack"
+@onready var walk: State_Walk = $"../Walk"
+@onready var attack: State_Attack = $"../Attack"
+@onready var shooting: State_Shoot = $"../Shooting"
 
 
 # What happens when the player enters this State?
@@ -26,8 +27,10 @@ func Physics( _delta : float) -> State:
 	
 # What happens with input events in this State?
 func HandleInput( _event : InputEvent) -> State:
-	if _event.is_action_pressed("Mouse_left"):
+	if _event.is_action_pressed("Melee"):
 		return attack
+	if _event.is_action_pressed("Shoot"):
+		return shooting
 	if _event.is_action_pressed("Interact"):
 		PlayerManager.interact_pressed.emit()
 	return null
