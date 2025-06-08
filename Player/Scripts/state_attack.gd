@@ -5,7 +5,7 @@ var attacking : bool = false
 @export var attack_sound : AudioStream
 @export_range(1,20,0.5) var decelerate_speed : float = 5.0
 
-@onready var hurtbox: HurtBox = $"../../Hurtbox"
+@onready var hurtbox: Hurtbox = $"../../Hurtbox"
 #@onready var animation_player2: AnimationPlayer = $"../../Sprite2D/AnimationPlayer2"
 @onready var idle: State = $"../Idle"
 @onready var walk: State = $"../Walk"
