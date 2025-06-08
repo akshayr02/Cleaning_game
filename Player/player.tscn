@@ -1,7 +1,7 @@
 [gd_scene load_steps=34 format=3 uid="uid://c8ep5xc3p6gas"]
 
 [ext_resource type="Script" path="res://Player/Scripts/player.gd" id="1_oo8v5"]
-[ext_resource type="Texture2D" uid="uid://4ctf8vmexppw" path="res://Player/player-unarmed-full.png" id="2_h4ua8"]
+[ext_resource type="Texture2D" uid="uid://b0qxj01aq033f" path="res://Player/player-unarmed-full-2.png" id="2_3qkvt"]
 [ext_resource type="PackedScene" uid="uid://bqktey4usedc8" path="res://GeneralNodes/Hurtbox/Hurtbox.tscn" id="3_lilh8"]
 [ext_resource type="PackedScene" uid="uid://cr8dpfycdpss7" path="res://GeneralNodes/Hitbox/Hitbox.tscn" id="4_ob1j3"]
 [ext_resource type="Script" path="res://Player/Scripts/state_idle.gd" id="5_6m7q1"]
@@ -401,7 +401,8 @@ script = ExtResource("1_oo8v5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_h4ua8")
+scale = Vector2(4, 4)
+texture = ExtResource("2_3qkvt")
 hframes = 8
 vframes = 5
 
