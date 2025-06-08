@@ -1,10 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://8mydylkpiows"]
+[gd_scene load_steps=18 format=3 uid="uid://8mydylkpiows"]
 
 [ext_resource type="Script" path="res://GUI/Player_hud/player_hud.gd" id="1_eo2rg"]
 [ext_resource type="Texture2D" uid="uid://bblkiqcf0p726" path="res://GUI/Player_hud/gui-health.png" id="2_uoacw"]
 [ext_resource type="PackedScene" uid="uid://dma2c8cjv7d5w" path="res://GUI/Player_hud/heart_gui.tscn" id="3_pihfy"]
 [ext_resource type="Texture2D" uid="uid://ci1a5gqwxeuxv" path="res://GUI/Player_hud/title_art.png" id="4_6jnya"]
+[ext_resource type="Texture2D" uid="uid://jhjch43xuqni" path="res://GUI/Player_hud/game_over.png" id="4_styop"]
 [ext_resource type="Texture2D" uid="uid://dnyj1xilrkng2" path="res://GUI/Player_hud/title.png" id="4_vivip"]
+[ext_resource type="Texture2D" uid="uid://cg103v7whrdhu" path="res://GUI/Player_hud/restart_button.png" id="5_88mkn"]
+[ext_resource type="Texture2D" uid="uid://dgd4exvx254l5" path="res://GUI/Player_hud/menu_button.png" id="6_bgcp5"]
 [ext_resource type="Texture2D" uid="uid://44yw0ipav0vk" path="res://GUI/Player_hud/start_button.png" id="6_q8w8k"]
 [ext_resource type="Script" path="res://GUI/Player_hud/button.gd" id="7_pu40f"]
 
@@ -14,6 +17,36 @@ border_width_top = 2
 border_width_right = 1
 border_width_bottom = 2
 border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_8mb3x"]
+resource_name = "Fade_all_from_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlackAll:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_5n8ry"]
+resource_name = "Fade_all_to_black"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FadeToBlackAll:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_65vdm"]
 length = 0.001
@@ -41,6 +74,42 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MainMenu/Start:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MainMenu/Art:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_d8egn"]
 resource_name = "Show_game_over"
@@ -58,34 +127,44 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_5n8ry"]
-resource_name = "Fade_all_to_black"
+[sub_resource type="Animation" id="Animation_bb21w"]
+resource_name = "Show_main_menu"
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FadeToBlackAll:color")
+tracks/0/path = NodePath("MainMenu/Title:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 2.96667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-
-[sub_resource type="Animation" id="Animation_8mb3x"]
-resource_name = "Fade_all_from_black"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FadeToBlackAll:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MainMenu/Start:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.96667),
+"transitions": PackedFloat32Array(1, 1, 0.366022),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MainMenu/Art:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.96667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wb1jr"]
@@ -93,7 +172,8 @@ _data = {
 "Fade_all_from_black": SubResource("Animation_8mb3x"),
 "Fade_all_to_black": SubResource("Animation_5n8ry"),
 "RESET": SubResource("Animation_65vdm"),
-"Show_game_over": SubResource("Animation_d8egn")
+"Show_game_over": SubResource("Animation_d8egn"),
+"Show_main_menu": SubResource("Animation_bb21w")
 }
 
 [node name="PlayerHud" type="CanvasLayer"]
@@ -158,49 +238,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control/GameOver"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.313726)
+[node name="Sprite2D" type="Sprite2D" parent="Control/GameOver"]
+texture_filter = 1
+position = Vector2(960.673, 540.952)
+scale = Vector2(5.74745, 5.73572)
+texture = ExtResource("4_styop")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOver/ColorRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/GameOver"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -178.0
-offset_top = -62.0
-offset_right = -82.0
-offset_bottom = 4.0
+offset_left = -710.332
+offset_top = 270.249
+offset_right = -582.332
+offset_bottom = 336.249
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3.67112, 3.67112)
 
-[node name="Retry" type="Button" parent="Control/GameOver/ColorRect/VBoxContainer"]
+[node name="Retry" type="TextureButton" parent="Control/GameOver/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 4
-text = "Retry?"
+texture_normal = ExtResource("5_88mkn")
 
-[node name="MainMenu" type="Button" parent="Control/GameOver/ColorRect/VBoxContainer"]
+[node name="MainMenu" type="TextureButton" parent="Control/GameOver/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
-text = "Main Menu"
-
-[node name="Label" type="Label" parent="Control/GameOver"]
-layout_mode = 1
-offset_left = 608.0
-offset_top = 265.0
-offset_right = 700.0
-offset_bottom = 288.0
-scale = Vector2(7.35166, 7.35166)
-size_flags_horizontal = 4
-size_flags_vertical = 1
-text = "GAME OVER"
+texture_normal = ExtResource("6_bgcp5")
 
 [node name="Bot_panel" type="Panel" parent="Control"]
 custom_minimum_size = Vector2(350, 10)
@@ -272,8 +340,9 @@ scale = Vector2(6.03241, 6.12769)
 texture = ExtResource("4_6jnya")
 
 [node name="Title" type="Sprite2D" parent="Control/MainMenu"]
-position = Vector2(940.405, 337.67)
-scale = Vector2(2.9758, 2.9758)
+texture_filter = 1
+position = Vector2(962.405, 491.67)
+scale = Vector2(4.94756, 4.94756)
 texture = ExtResource("4_vivip")
 
 [node name="Start" type="TextureButton" parent="Control/MainMenu"]

@@ -4,8 +4,8 @@ var hearts : Array[HeartGUI] = []
 
 @onready var h_flow_container: HFlowContainer = $Control/HFlowContainer
 @onready var game_over: Control = $Control/GameOver
-@onready var retry: Button = $Control/GameOver/ColorRect/VBoxContainer/Retry
-@onready var main_menu_button: Button = $Control/GameOver/ColorRect/VBoxContainer/MainMenu
+@onready var retry: TextureButton = $Control/GameOver/VBoxContainer/Retry
+@onready var main_menu_button: TextureButton = $Control/GameOver/VBoxContainer/MainMenu
 @onready var animation_player: AnimationPlayer = $Control/AnimationPlayer
 @onready var wave_label: Label = $Control/Bot_panel/Wave_label
 @onready var enemies_label: Label = $Control/Bot_panel/Enemies_label
@@ -93,8 +93,10 @@ func load_main_menu() -> void:
 
 func show_main_menu() -> void:
 	main_menu.visible = true
+	animation_player.play("Show_main_menu")
+	await animation_player.animation_finished
 	game_over.mouse_filter = Control.MOUSE_FILTER_STOP
-	#get_tree().paused = true
+	get_tree().paused = true
 	start.grab_focus()
 
 func hide_main_menu() -> void:

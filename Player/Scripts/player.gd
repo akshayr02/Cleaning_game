@@ -8,6 +8,7 @@ var current_direction_name := ""
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer2
 @onready var hitbox: Hitbox = $Hitbox
+@onready var hurtbox: HurtBox = $Hurtbox
 #@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
 signal DirectionChanged(new_direction_name: String)
