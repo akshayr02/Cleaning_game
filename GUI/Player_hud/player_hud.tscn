@@ -1,7 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://8mydylkpiows"]
+[gd_scene load_steps=19 format=3 uid="uid://8mydylkpiows"]
 
 [ext_resource type="Script" path="res://GUI/Player_hud/player_hud.gd" id="1_eo2rg"]
-[ext_resource type="Texture2D" uid="uid://bblkiqcf0p726" path="res://GUI/Player_hud/gui-health.png" id="2_uoacw"]
+[ext_resource type="Texture2D" uid="uid://qr4fe42nyaba" path="res://GUI/Player_hud/health_button.png" id="2_7yuhb"]
 [ext_resource type="PackedScene" uid="uid://dma2c8cjv7d5w" path="res://GUI/Player_hud/heart_gui.tscn" id="3_pihfy"]
 [ext_resource type="Texture2D" uid="uid://ci1a5gqwxeuxv" path="res://GUI/Player_hud/title_art.png" id="4_6jnya"]
 [ext_resource type="Texture2D" uid="uid://jhjch43xuqni" path="res://GUI/Player_hud/game_over.png" id="4_styop"]
@@ -9,14 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://cg103v7whrdhu" path="res://GUI/Player_hud/restart_button.png" id="5_88mkn"]
 [ext_resource type="Texture2D" uid="uid://dgd4exvx254l5" path="res://GUI/Player_hud/menu_button.png" id="6_bgcp5"]
 [ext_resource type="Texture2D" uid="uid://44yw0ipav0vk" path="res://GUI/Player_hud/start_button.png" id="6_q8w8k"]
+[ext_resource type="Texture2D" uid="uid://ph8ja3itmfn6" path="res://GUI/Player_hud/wave_hud.png" id="7_nepeu"]
 [ext_resource type="Script" path="res://GUI/Player_hud/button.gd" id="7_pu40f"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gftf4"]
-border_width_left = 1
-border_width_top = 2
-border_width_right = 1
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
+[ext_resource type="FontFile" uid="uid://fnv8tn6gclgm" path="res://GUI/Player_hud/RasterForgeRegular-JpBgm.ttf" id="8_2ppcp"]
 
 [sub_resource type="Animation" id="Animation_8mb3x"]
 resource_name = "Fade_all_from_black"
@@ -190,19 +185,19 @@ grow_vertical = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Control"]
 texture_filter = 1
-position = Vector2(1525, 49)
+position = Vector2(1530.66, 68.799)
 scale = Vector2(7.21547, 7.21547)
-texture = ExtResource("2_uoacw")
+texture = ExtResource("2_7yuhb")
 region_enabled = true
-region_rect = Rect2(29, 0, 34, 8)
+region_rect = Rect2(153.821, 102.485, 32.4882, 8.93425)
 
 [node name="HFlowContainer" type="HFlowContainer" parent="Control"]
 custom_minimum_size = Vector2(45, 45)
 layout_mode = 0
-offset_left = 1678.0
-offset_top = 30.0
-offset_right = 1848.0
-offset_bottom = 134.0
+offset_left = 1680.0
+offset_top = 43.3484
+offset_right = 1850.0
+offset_bottom = 147.348
 alignment = 1
 
 [node name="Heart" parent="Control/HFlowContainer" instance=ExtResource("3_pihfy")]
@@ -230,6 +225,7 @@ custom_minimum_size = Vector2(50, 50)
 layout_mode = 2
 
 [node name="GameOver" type="Control" parent="Control"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -270,7 +266,8 @@ texture_filter = 1
 layout_mode = 2
 texture_normal = ExtResource("6_bgcp5")
 
-[node name="Bot_panel" type="Panel" parent="Control"]
+[node name="Bot_panel" type="TextureRect" parent="Control"]
+texture_filter = 1
 custom_minimum_size = Vector2(350, 10)
 layout_mode = 1
 anchors_preset = 2
@@ -283,44 +280,50 @@ offset_bottom = -43.0
 grow_vertical = 0
 size_flags_horizontal = 4
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_gftf4")
+texture = ExtResource("7_nepeu")
 
 [node name="Wave_label" type="Label" parent="Control/Bot_panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(5, 5)
 layout_mode = 0
-offset_left = 1.04896
-offset_top = 1.25002
-offset_right = 218.049
-offset_bottom = 58.25
-scale = Vector2(0.655547, 0.65)
-theme_override_font_sizes/font_size = 31
-text = "Day: 1"
+offset_left = 91.2095
+offset_top = 1.5931
+offset_right = 191.209
+offset_bottom = 58.5931
+scale = Vector2(0.641862, 0.65)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_2ppcp")
+theme_override_font_sizes/font_size = 40
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Enemies_label" type="Label" parent="Control/Bot_panel"]
+texture_filter = 1
+custom_minimum_size = Vector2(5, 5)
 layout_mode = 0
-offset_left = 187.0
-offset_top = 1.00002
-offset_right = 404.0
-offset_bottom = 58.0
-scale = Vector2(0.655547, 0.65)
-theme_override_font_sizes/font_size = 31
-text = "Enemies: 1"
+offset_left = 288.007
+offset_top = 1.5931
+offset_right = 388.007
+offset_bottom = 58.5931
+scale = Vector2(0.641862, 0.65)
+theme_override_colors/font_color = Color(0.960784, 0.960784, 0.713726, 1)
+theme_override_fonts/font = ExtResource("8_2ppcp")
+theme_override_font_sizes/font_size = 40
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MainMenu" type="Control" parent="Control"]
 process_mode = 3
+visible = false
 layout_mode = 1
-anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 0.146996
-offset_top = 12.9279
-offset_right = 0.146973
-offset_bottom = 12.928
+offset_bottom = -0.00012207
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="Control/MainMenu"]
 layout_mode = 1

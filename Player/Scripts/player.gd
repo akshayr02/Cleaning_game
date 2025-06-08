@@ -69,7 +69,7 @@ func SetDirection() -> bool:
 		return false
 	
 	var direction_angle = direction.angle_to(Vector2.LEFT + Vector2.UP)
-	var direction_id = (direction_angle+2)%45 - 1
+	var direction_id = (int(direction_angle)+2)%45 - 1
 	
 	DirectionChanged.emit(direction_id)
 	return true
