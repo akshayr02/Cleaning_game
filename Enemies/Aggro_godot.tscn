@@ -17,7 +17,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_lxlmc"]
 
 [node name="Aggro_Godot" type="CharacterBody2D"]
-scale = Vector2(0.661554, 0.69968)
+scale = Vector2(0.197309, 0.20868)
+collision_layer = 256
+collision_mask = 49
 script = ExtResource("1_w7joe")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

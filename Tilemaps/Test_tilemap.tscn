@@ -71,7 +71,7 @@ texture_region_size = Vector2i(32, 32)
 5:5/0/texture_origin = Vector2i(0, -8)
 0:6/0 = 0
 0:6/0/texture_origin = Vector2i(0, -8)
-0:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
+0:6/0/physics_layer_1/polygon_0/points = PackedVector2Array(0, -8, -16, 0, 0, 8, 16, 0)
 1:6/0 = 0
 1:6/0/texture_origin = Vector2i(0, -8)
 2:6/0 = 0
@@ -111,6 +111,8 @@ tile_offset_axis = 1
 tile_size = Vector2i(32, 16)
 physics_layer_0/collision_layer = 16
 physics_layer_0/collision_mask = 0
+physics_layer_1/collision_layer = 32
+physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_24x32")
 
 [node name="Test_tilemap" type="TileMapLayer"]
