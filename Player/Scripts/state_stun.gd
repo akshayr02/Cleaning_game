@@ -4,7 +4,7 @@ class_name State_Stun extends State
 @onready var decelerate_speed: float = 10.0
 @onready var invulnerable_duration: float = 1.0
 
-var hurtbox : HurtBox
+var hurtbox : Hurtbox
 var direction : Vector2
 
 var next_state : State = null
@@ -17,10 +17,10 @@ func Enter() -> void:
 	direction = player.global_position.direction_to(hurtbox.global_position)
 	player.velocity = direction * -knockback_speed
 	
-	player.SetDirection()
+	#player.SetDirection(player.direction)
 	player.UpdateAnimation("Stun")
 	player.make_invulnerable(invulnerable_duration)
-	#player.effect_animation_player.play("Damaged")
+	player.effect_animation_player.play("Damaged")
 	
 	pass
 
@@ -43,7 +43,7 @@ func Process( _delta : float) -> State:
 func Physics( _delta : float) -> State:
 	return null
 	
-func _player_damaged(_hurtbox : HurtBox) -> void:
+func _player_damaged(_hurtbox : Hurtbox) -> void:
 	hurtbox = _hurtbox
 	if state_machine.current_state != death:
 		state_machine.ChangeState(self)

@@ -8,15 +8,24 @@ var current_direction_name := ""
 @onready var state_machine: PlayerStateMachine = $StateMachine
 @onready var animation_player: AnimationPlayer = $AnimationPlayer2
 @onready var hitbox: Hitbox = $Hitbox
-@onready var hurtbox: HurtBox = $Hurtbox
+@onready var hurtbox: Hurtbox = $Hurtbox
 #@onready var effect_animation_player: AnimationPlayer = $EffectAnimationPlayer
 
 signal DirectionChanged(new_direction_name: String)
-signal player_damaged(hurtbox : HurtBox)
+signal player_damaged(hurtbox : Hurtbox)
 
 var invulnerable : bool = false
 var hp : int = 6
 var max_hp : int = 6
+
+var attack_direction_angles = {"right" : 0,
+		"down-right": 22.5,
+		"down": 90,
+		"down-left": 157.5,
+		"left" : 180,
+		"up-left": 202.5,
+		"up": 270,
+		"up-right": 346.5}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -52,6 +61,7 @@ func _process(_delta: float) -> void:
 
 		last_direction = direction
 		animation_player.play(new_direction_name)
+		hurtbox.rotation = deg_to_rad(attack_direction_angles[new_direction_name])
 	else:
 		var standing_direction_name = get_direction_name(last_direction) + "-standing"
 		if standing_direction_name != current_direction_name:
@@ -59,27 +69,16 @@ func _process(_delta: float) -> void:
 			DirectionChanged.emit(current_direction_name)
 
 		animation_player.play(standing_direction_name)
-
-
+		
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
-	
-func SetDirection() -> bool:
-	if direction == Vector2.ZERO:
-		return false
-	
-	var direction_angle = direction.angle_to(Vector2.LEFT + Vector2.UP)
-	var direction_id = (int(direction_angle)+2)%45 - 1
-	
-	DirectionChanged.emit(direction_id)
-	return true
 
 func UpdateAnimation( state : String) -> void:
 	#animation_player.play(state + "_" + AnimDirection())
 	animation_player.play(state)
 	pass
 	
-func _take_damage(hurtbox : HurtBox) -> void:
+func _take_damage(hurtbox : Hurtbox) -> void:
 	if invulnerable:
 		return
 	if hp > 0:
@@ -132,8 +131,6 @@ func get_direction_name(dir: Vector2) -> String:
 		return "up"
 	else:
 		return "up-right"
-
-
 
 #func _physics_process(delta: float) -> void:
 	#var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
